@@ -5,7 +5,6 @@ import {
   Dropdown,
   Form,
   Input,
-  InputRef,
   Menu,
   message,
   Select,
@@ -20,7 +19,7 @@ import {
   setDoc,
 } from "firebase/firestore";
 import moment from "moment";
-import React, { useEffect, useLayoutEffect } from "react";
+import React, { useLayoutEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   Container,
@@ -93,7 +92,7 @@ export const ProtectedRoute: React.FC = () => {
         message.error(error);
         console.log(error);
       });
-  }, [data, firestore]);
+  }, [data, firestore, medCard, dispatch]);
 
   const logoutButton = (
     <Menu>
