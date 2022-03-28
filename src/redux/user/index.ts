@@ -24,6 +24,10 @@ export const setUserCard = createAction<{
   loading: boolean;
 }>("user/setCard");
 
+export const setUserLoading = createAction<{
+  loading: boolean;
+}>("user/setloading");
+
 const index = createSlice({
   name: "user",
   initialState,
@@ -31,6 +35,9 @@ const index = createSlice({
   extraReducers: (builder) => {
     builder.addCase(setUser, (state, action) => {
       state.data = action.payload.data;
+      state.loading = action.payload.loading;
+    });
+    builder.addCase(setUserLoading, (state, action) => {
       state.loading = action.payload.loading;
     });
     builder.addCase(setUserCard, (state, action) => {

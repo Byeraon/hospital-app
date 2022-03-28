@@ -19,7 +19,7 @@ import {
   setDoc,
 } from "firebase/firestore";
 import moment from "moment";
-import React, { useLayoutEffect } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   Container,
@@ -28,7 +28,7 @@ import {
 } from "src/components/styles";
 import { RootState } from "src/redux/configureStore";
 import { setLoader } from "src/redux/loader";
-import { setUser, setUserCard } from "src/redux/user";
+import { setUser, setUserCard, setUserLoading } from "src/redux/user";
 import { Loader } from "../Loader/Loader";
 import style from "./ProtectedRoute.module.css";
 
@@ -77,9 +77,9 @@ export const ProtectedRoute: React.FC = () => {
       });
   };
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     dispatch(setLoader({ loader: true }));
-    dispatch(setUserCard({ medCard, loading: true }));
+    dispatch(setUserLoading({ loading: true }));
     getDoc(doc(firestore, "medcards", data ? data.uid : ""))
       .then((data) => data.data())
       .then((data: any) => {
@@ -87,12 +87,12 @@ export const ProtectedRoute: React.FC = () => {
         dispatch(setLoader({ loader: false }));
       })
       .catch(function (error) {
-        dispatch(setUserCard({ medCard, loading: false }));
+        dispatch(setUserLoading({ loading: false }));
         dispatch(setLoader({ loader: false }));
         message.error(error);
         console.log(error);
       });
-  }, [data, firestore, medCard, dispatch]);
+  }, [data, firestore, dispatch]);
 
   const logoutButton = (
     <Menu>
