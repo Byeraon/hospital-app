@@ -9,8 +9,7 @@ import { BX24 } from 'bx24';
 function App() {
   const { data } = useSelector((state: RootState) => state.user);
 
-  // eslint-disable-next-line no-restricted-globals
-  const bx24 = new BX24(window, parent);
+  const bx24 = new BX24();
 
   bx24.getAuth().then(function(auth) {
     console.log(auth);
