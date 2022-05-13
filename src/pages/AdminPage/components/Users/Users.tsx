@@ -59,7 +59,7 @@ export const Users = () => {
             {
                 title: "lastName",
                 key: "lastName",
-                dataIndex: "lastName",
+                dataIndex: "lgastName",
                 render: (text: string, record: any, index: any) => <Input onChange={(e) => changeValue(e.target.value, 'lastName', record, index)}  value={text}></Input>
             },
             {

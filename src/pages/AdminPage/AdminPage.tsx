@@ -1,4 +1,3 @@
-import { Tabs } from 'antd';
 import React, {useState} from 'react';
 import style from './AdminPage.module.css';
 import {Users} from "./components/Users/Users";
