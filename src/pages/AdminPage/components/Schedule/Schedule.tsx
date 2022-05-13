@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import style from './Schedule.module.css';
-import {Button, Checkbox, DatePicker, Input, message, Table} from "antd";
+import {Button,  DatePicker, Input, message, Table} from "antd";
 import {collection, doc, getFirestore, setDoc} from "firebase/firestore";
 import moment from "moment";
 
@@ -17,7 +17,7 @@ export const Schedule = () => {
     }
 
     const addVisit = () => {
-        setVisit((prevState: any) => [...prevState, {doctor: '', date: new Date, spec: '', reload: 'Save', id: visits.length > 0 ? Number(visits[visits.length - 1].id) + 1 : 0, medCard: ''}])
+        setVisit((prevState: any) => [...prevState, {doctor: '', date: new Date(), spec: '', reload: 'Save', id: visits.length > 0 ? Number(visits[visits.length - 1].id) + 1 : 0, medCard: ''}])
     }
 
     const reloadData = (record: any) => {
@@ -48,7 +48,7 @@ export const Schedule = () => {
             title: "date",
             key: "date",
             dataIndex: "date",
-            render: (text: Date, record: any, index: any) => <DatePicker style={{width: '100%'}} value={moment(new Date)} onChange={(e) => changeValue(e?.date, 'date', record, index)}></DatePicker>
+            render: (text: Date, record: any, index: any) => <DatePicker style={{width: '100%'}} value={moment(new Date())} onChange={(e) => changeValue(e?.date, 'date', record, index)}></DatePicker>
         },
         {
             title: "spec",

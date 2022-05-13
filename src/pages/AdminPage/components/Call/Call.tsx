@@ -1,6 +1,5 @@
 import React, {useState} from "react";
-import style from './Call.module.css';
-import {Button, Checkbox, DatePicker, Input, message, Table} from "antd";
+import {Button, DatePicker, Input, message, Table} from "antd";
 import {collection, doc, getFirestore, setDoc} from "firebase/firestore";
 import moment from "moment";
 
@@ -44,7 +43,7 @@ export const Call = () => {
             title: "date",
             key: "date",
             dataIndex: "date",
-            render: (text: Date, record: any, index: any) => <DatePicker style={{width: '100%'}} value={moment(new Date)} onChange={(e) => changeValue(e?.date, 'date', record, index)}></DatePicker>
+            render: (text: Date, record: any, index: any) => <DatePicker style={{width: '100%'}} value={moment(new Date())} onChange={(e) => changeValue(e?.date, 'date', record, index)}></DatePicker>
         },
         {
             title: "plot",

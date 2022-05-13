@@ -1,8 +1,6 @@
-import {getDoc, getFirestore, doc, collection, query, getDocs, setDoc} from "firebase/firestore";
+import {getFirestore, doc, collection, getDocs, setDoc} from "firebase/firestore";
 import React, {useEffect, useState} from "react";
-import style from './Users.module.css';
 import {Button, Checkbox, Input, message, Table} from "antd";
-import {setUserCard} from "../../../../redux/user";
 
 export const Users = () => {
     const [users, setUsers] = useState<any>([]);
@@ -110,10 +108,6 @@ export const Users = () => {
     ];
 
     useEffect(() => {
-        console.log(users)
-    }, [users, columns])
-
-    useEffect(() => {
         (async () => {
             const querySnapshot = await getDocs(usersRef);
             console.log(querySnapshot)
@@ -125,7 +119,7 @@ export const Users = () => {
             });
             console.log('all')
         })()
-    }, [])
+    }, [usersRef])
 
 
     return <Table dataSource={users} columns={columns}></Table>
