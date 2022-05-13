@@ -108,6 +108,7 @@ export const Users = () => {
     ];
 
     useEffect(() => {
+        const firestore = getFirestore();
         const usersRef = collection(firestore, 'medcards');
         (async () => {
             const querySnapshot = await getDocs(usersRef);
