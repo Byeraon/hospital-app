@@ -5,7 +5,6 @@ import {Button, Checkbox, Input, message, Table} from "antd";
 export const Users = () => {
     const [users, setUsers] = useState<any>([]);
     const firestore = getFirestore();
-    const usersRef = collection(firestore, 'medcards');
 
     const changeValue = (newValue: any, key: any, record: any, index: any) => {
         console.log(newValue)
@@ -15,6 +14,7 @@ export const Users = () => {
     }
 
     const reloadData = (record: any) => {
+        const usersRef = collection(firestore, 'medcards');
         setDoc(doc(usersRef, record.uid), record)
             .then(() => {
                 message.success("Medical card updated!");
@@ -108,6 +108,7 @@ export const Users = () => {
     ];
 
     useEffect(() => {
+        const usersRef = collection(firestore, 'medcards');
         (async () => {
             const querySnapshot = await getDocs(usersRef);
             console.log(querySnapshot)
@@ -119,7 +120,7 @@ export const Users = () => {
             });
             console.log('all')
         })()
-    }, [usersRef])
+    }, [])
 
 
     return <Table dataSource={users} columns={columns}></Table>
