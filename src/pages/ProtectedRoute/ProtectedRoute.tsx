@@ -261,7 +261,7 @@ export const ProtectedRoute: React.FC = () => {
         </div>
       </Container>
     ) : (
-      <></>
+      <>{message.error('Firebase: Google connection error')}</>
     )
   ) : (
     <Loader />
