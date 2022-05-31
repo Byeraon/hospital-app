@@ -1,10 +1,6 @@
-# Getting Started with Create React App
+# Учебный проект - веб регистратура
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-## Available Scripts
-
-In the project directory, you can run:
+Команды для работы с проектом:
 
 ### `npm start`
 
