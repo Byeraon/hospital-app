@@ -2,7 +2,7 @@
 const handler = async (event) => {
   try {
     const subject = event.queryStringParameters.name || 'World'
-    console.log(event)
+    console.log(JSON.parse(event.body))
     return {
       statusCode: 200,
       body: JSON.stringify({ message: `Hello ${subject}` }),
